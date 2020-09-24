@@ -7,7 +7,6 @@ import static org.folio.dataimport.util.RestUtil.OKAPI_URL_HEADER;
 import static org.folio.rest.jaxrs.model.DataImportEventTypes.DI_SRS_MARC_BIB_RECORD_MATCHED;
 import static org.folio.rest.jaxrs.model.DataImportEventTypes.DI_SRS_MARC_BIB_RECORD_NOT_MATCHED;
 import static org.folio.rest.jaxrs.model.EntityType.INSTANCE;
-import static org.folio.rest.jaxrs.model.EntityType.MARC_BIBLIOGRAPHIC;
 import static org.folio.rest.jaxrs.model.MatchExpression.DataValueType.VALUE_FROM_RECORD;
 import static org.folio.rest.jaxrs.model.ProfileSnapshotWrapper.ContentType.MAPPING_PROFILE;
 import static org.folio.rest.jaxrs.model.ProfileSnapshotWrapper.ContentType.MATCH_PROFILE;
@@ -163,7 +162,7 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
       .willReturn(WireMock.noContent()));
 
     HashMap<String, String> payloadContext = new HashMap<>();
-    payloadContext.put(MARC_BIBLIOGRAPHIC.value(), Json.encode(record));
+    payloadContext.put(EntityType.MARC_BIBLIOGRAPHIC.value(), Json.encode(record));
 
     DataImportEventPayload dataImportEventPayload = new DataImportEventPayload()
       .withContext(payloadContext)
@@ -172,8 +171,8 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
         .withId(UUID.randomUUID().toString())
         .withContentType(MATCH_PROFILE)
         .withContent(new MatchProfile()
-          .withExistingRecordType(MARC_BIBLIOGRAPHIC)
-          .withIncomingRecordType(MARC_BIBLIOGRAPHIC)
+          .withExistingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
+          .withIncomingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
           .withMatchDetails(singletonList(new MatchDetail()
             .withMatchCriterion(EXACTLY_MATCHES)
             .withExistingMatchExpression(new MatchExpression()
@@ -183,8 +182,8 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
                 new Field().withLabel("indicator1").withValue("f"),
                 new Field().withLabel("indicator2").withValue("f"),
                 new Field().withLabel("recordSubfield").withValue("s"))))
-            .withExistingRecordType(MARC_BIBLIOGRAPHIC)
-            .withIncomingRecordType(MARC_BIBLIOGRAPHIC)
+            .withExistingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
+            .withIncomingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
             .withIncomingMatchExpression(new MatchExpression()
               .withDataValueType(VALUE_FROM_RECORD)
               .withFields(Lists.newArrayList(
@@ -215,7 +214,7 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
       .willReturn(WireMock.noContent()));
 
     HashMap<String, String> payloadContext = new HashMap<>();
-    payloadContext.put(MARC_BIBLIOGRAPHIC.value(), Json.encode(record));
+    payloadContext.put(EntityType.MARC_BIBLIOGRAPHIC.value(), Json.encode(record));
 
     DataImportEventPayload dataImportEventPayload = new DataImportEventPayload()
       .withContext(payloadContext)
@@ -224,8 +223,8 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
         .withId(UUID.randomUUID().toString())
         .withContentType(MATCH_PROFILE)
         .withContent(new MatchProfile()
-          .withExistingRecordType(MARC_BIBLIOGRAPHIC)
-          .withIncomingRecordType(MARC_BIBLIOGRAPHIC)
+          .withExistingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
+          .withIncomingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
           .withMatchDetails(singletonList(new MatchDetail()
             .withMatchCriterion(EXACTLY_MATCHES)
             .withExistingMatchExpression(new MatchExpression()
@@ -235,8 +234,8 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
                 new Field().withLabel("indicator1").withValue("f"),
                 new Field().withLabel("indicator2").withValue("f"),
                 new Field().withLabel("recordSubfield").withValue("i"))))
-            .withExistingRecordType(MARC_BIBLIOGRAPHIC)
-            .withIncomingRecordType(MARC_BIBLIOGRAPHIC)
+            .withExistingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
+            .withIncomingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
             .withIncomingMatchExpression(new MatchExpression()
               .withDataValueType(VALUE_FROM_RECORD)
               .withFields(Lists.newArrayList(
@@ -267,7 +266,7 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
       .willReturn(WireMock.noContent()));
 
     HashMap<String, String> payloadContext = new HashMap<>();
-    payloadContext.put(MARC_BIBLIOGRAPHIC.value(), Json.encode(record));
+    payloadContext.put(EntityType.MARC_BIBLIOGRAPHIC.value(), Json.encode(record));
 
     DataImportEventPayload dataImportEventPayload = new DataImportEventPayload()
       .withContext(payloadContext)
@@ -276,8 +275,8 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
         .withId(UUID.randomUUID().toString())
         .withContentType(MATCH_PROFILE)
         .withContent(new MatchProfile()
-          .withExistingRecordType(MARC_BIBLIOGRAPHIC)
-          .withIncomingRecordType(MARC_BIBLIOGRAPHIC)
+          .withExistingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
+          .withIncomingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
           .withMatchDetails(singletonList(new MatchDetail()
             .withMatchCriterion(EXACTLY_MATCHES)
             .withExistingMatchExpression(new MatchExpression()
@@ -287,8 +286,8 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
                 new Field().withLabel("indicator1").withValue(""),
                 new Field().withLabel("indicator2").withValue(""),
                 new Field().withLabel("recordSubfield").withValue(""))))
-            .withExistingRecordType(MARC_BIBLIOGRAPHIC)
-            .withIncomingRecordType(MARC_BIBLIOGRAPHIC)
+            .withExistingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
+            .withIncomingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
             .withIncomingMatchExpression(new MatchExpression()
               .withDataValueType(VALUE_FROM_RECORD)
               .withFields(Lists.newArrayList(
@@ -319,7 +318,7 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
       .willReturn(WireMock.noContent()));
 
     HashMap<String, String> payloadContext = new HashMap<>();
-    payloadContext.put(MARC_BIBLIOGRAPHIC.value(), Json.encode(record));
+    payloadContext.put(EntityType.MARC_BIBLIOGRAPHIC.value(), Json.encode(record));
 
     DataImportEventPayload dataImportEventPayload = new DataImportEventPayload()
       .withContext(payloadContext)
@@ -328,8 +327,8 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
         .withId(UUID.randomUUID().toString())
         .withContentType(MATCH_PROFILE)
         .withContent(new MatchProfile()
-          .withExistingRecordType(MARC_BIBLIOGRAPHIC)
-          .withIncomingRecordType(MARC_BIBLIOGRAPHIC)
+          .withExistingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
+          .withIncomingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
           .withMatchDetails(singletonList(new MatchDetail()
             .withMatchCriterion(EXACTLY_MATCHES)
             .withExistingMatchExpression(new MatchExpression()
@@ -339,8 +338,8 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
                 new Field().withLabel("indicator1").withValue("f"),
                 new Field().withLabel("indicator2").withValue("f"),
                 new Field().withLabel("recordSubfield").withValue("s"))))
-            .withExistingRecordType(MARC_BIBLIOGRAPHIC)
-            .withIncomingRecordType(MARC_BIBLIOGRAPHIC)
+            .withExistingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
+            .withIncomingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
             .withIncomingMatchExpression(new MatchExpression()
               .withDataValueType(VALUE_FROM_RECORD)
               .withFields(Lists.newArrayList(
@@ -370,7 +369,7 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
       .willReturn(WireMock.noContent()));
 
     HashMap<String, String> payloadContext = new HashMap<>();
-    payloadContext.put(MARC_BIBLIOGRAPHIC.value(), Json.encode(record));
+    payloadContext.put(EntityType.MARC_BIBLIOGRAPHIC.value(), Json.encode(record));
 
     DataImportEventPayload dataImportEventPayload = new DataImportEventPayload()
       .withContext(payloadContext)
@@ -379,8 +378,8 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
         .withId(UUID.randomUUID().toString())
         .withContentType(MATCH_PROFILE)
         .withContent(new MatchProfile()
-          .withExistingRecordType(MARC_BIBLIOGRAPHIC)
-          .withIncomingRecordType(MARC_BIBLIOGRAPHIC)
+          .withExistingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
+          .withIncomingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
           .withMatchDetails(singletonList(new MatchDetail()
             .withMatchCriterion(EXACTLY_MATCHES)
             .withExistingMatchExpression(new MatchExpression()
@@ -390,8 +389,8 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
                 new Field().withLabel("indicator1").withValue("f"),
                 new Field().withLabel("indicator2").withValue("f"),
                 new Field().withLabel("recordSubfield").withValue("r"))))
-            .withExistingRecordType(MARC_BIBLIOGRAPHIC)
-            .withIncomingRecordType(MARC_BIBLIOGRAPHIC)
+            .withExistingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
+            .withIncomingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
             .withIncomingMatchExpression(new MatchExpression()
               .withDataValueType(VALUE_FROM_RECORD)
               .withFields(Lists.newArrayList(
@@ -418,8 +417,8 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
     MatchProfile matchProfile = new MatchProfile()
       .withId(UUID.randomUUID().toString())
       .withName("MARC-MARC matching")
-      .withIncomingRecordType(MARC_BIBLIOGRAPHIC)
-      .withExistingRecordType(MARC_BIBLIOGRAPHIC);
+      .withIncomingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
+      .withExistingRecordType(EntityType.MARC_BIBLIOGRAPHIC);
 
     ProfileSnapshotWrapper profileSnapshotWrapper = new ProfileSnapshotWrapper()
       .withId(UUID.randomUUID().toString())
@@ -439,11 +438,36 @@ public class MarcBibliographicMatchEventHandlerTest extends AbstractLBServiceTes
   }
 
   @Test
+  public void shouldReturnFalseWhenHandlerIsNotEligibleForProfile() {
+    MatchProfile matchProfile = new MatchProfile()
+      .withId(UUID.randomUUID().toString())
+      .withName("MARC-MARC matching")
+      .withIncomingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
+      .withExistingRecordType(EntityType.HOLDINGS);
+
+    ProfileSnapshotWrapper profileSnapshotWrapper = new ProfileSnapshotWrapper()
+      .withId(UUID.randomUUID().toString())
+      .withProfileId(matchProfile.getId())
+      .withContentType(MATCH_PROFILE)
+      .withContent(matchProfile);
+
+    DataImportEventPayload dataImportEventPayload = new DataImportEventPayload()
+      .withTenant(TENANT_ID)
+      .withEventType("DI_SRS_MARC_BIB_RECORD_CREATED")
+      .withContext(new HashMap<>())
+      .withCurrentNode(profileSnapshotWrapper);
+
+    boolean isEligible = marcBibliographicMatchEventHandler.isEligible(dataImportEventPayload);
+
+    Assert.assertFalse(isEligible);
+  }
+
+  @Test
   public void shouldReturnFalseWhenNotMatchProfileForProfile() {
     MappingProfile mappingProfile = new MappingProfile()
       .withId(UUID.randomUUID().toString())
       .withName("Create instance")
-      .withIncomingRecordType(MARC_BIBLIOGRAPHIC)
+      .withIncomingRecordType(EntityType.MARC_BIBLIOGRAPHIC)
       .withExistingRecordType(INSTANCE);
 
     ProfileSnapshotWrapper profileSnapshotWrapper = new ProfileSnapshotWrapper()
